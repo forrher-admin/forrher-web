@@ -1,0 +1,27 @@
+---
+description: ForrHer project rules
+alwaysApply: true
+---
+
+# ForrHer Project Rules
+
+## PRODUCT
+ForrHer answers "What would make today easier?" Tone is calm, warm, premium, practical, respectful. It is NON-DIAGNOSTIC: never diagnose, prescribe or promise outcomes. Every health-related page has a short "when to see a professional" note.
+
+## STACK
+Do not substitute without asking: Next.js App Router (latest stable), TypeScript strict, Tailwind CSS, Supabase (Postgres, Auth, RLS) via `@supabase/ssr`, zod for validation. Later: Resend (email), Gemini free tier (Ask ForrHer), Paystack payment links (M-Pesa + cards, Kenya). Hosting: Vercel Hobby from GitHub.
+
+## FEATURES (built in stages)
+ForrHer Today (guided flow), ForrHer Learn (articles + simple admin editor), ForrHer Tools (JSON-driven tool framework, 4 tools: Period Prep Checklist, Build My Period Kit, Workday Period Plan, Questions to Ask Your Doctor), ForrHer Shop (catalogue + payment links), ForrHer Spaces (info page + enquiry form), Accounts (login, saved items, orders, deletion request), Ask ForrHer (AI-assisted search), Privacy.
+
+## DESIGN
+Mobile-first (users are on phones, slow networks). Touch targets >=44px, body text >=16px, WCAG AA contrast. ALL colors, fonts and radii live as Tailwind theme tokens/CSS variables in ONE place so rebranding is a single-file change. Placeholder palette: background ivory `#FAF7F5`, surface `#FFFFFF`, text `#2B1F2B`, primary plum `#5B3A5B`, accent rose `#B5738A`, soft sage `#DCE6DD`, border `#E8DFE3`, muted `#6E6270`. Fonts via next/font: Fraunces (headings) + Inter (body). Generous whitespace, soft rounded corners, no emoji in UI, subtle motion only (respect prefers-reduced-motion). Plain, kind language, no jargon, no fear-based copy.
+
+## CONTENT
+Any health copy you write is PLACEHOLDER, generic and non-medical, marked in code with `// PLACEHOLDER: replace with ForrHer-approved content`. Never invent medical facts, statistics, dosages or claims.
+
+## SECURITY
+Secrets only in env vars. Never commit `.env*`. Keep `.env.example` current. Never expose the Supabase service role key to the client. RLS on EVERY table, default deny, explicit policies and explicit GRANTs (the project has "auto-expose new tables" OFF). Validate all input server-side with zod. Sanitize rendered markdown. No analytics/trackers without asking.
+
+## WORKING RULES
+Small commits, one logical change each. After every task run `npm run lint` and `npm run build`, fix errors, then tell how to run and test. Do not add libraries unless clearly needed and say why. If something is ambiguous or changes cost, stack or scope, ask first. Never print or echo secret values from `.env.local`.
