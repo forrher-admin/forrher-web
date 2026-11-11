@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import { Suspense } from "react";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { getCurrentUser } from "@/lib/auth";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -43,6 +45,11 @@ export const metadata: Metadata = {
   },
 };
 
+async function HeaderWithAuth() {
+  const user = await getCurrentUser();
+  return <Header isLoggedIn={Boolean(user)} />;
+}
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -50,7 +57,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
-        <Header />
+        <Suspense fallback={<Header isLoggedIn={false} />}>
+          <HeaderWithAuth />
+        </Suspense>
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

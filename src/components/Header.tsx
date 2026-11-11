@@ -13,7 +13,11 @@ const navLinks = [
   { href: "/spaces", label: "Spaces" },
 ] as const;
 
-export function Header() {
+type HeaderProps = {
+  isLoggedIn?: boolean;
+};
+
+export function Header({ isLoggedIn = false }: HeaderProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const menuId = useId();
@@ -45,7 +49,8 @@ export function Header() {
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {navLinks.map((link) => {
-            const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            const active =
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
@@ -69,7 +74,7 @@ export function Header() {
             onClick={closeMenu}
             className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-base text-surface transition-colors hover:bg-primary-hover"
           >
-            Sign in
+            {isLoggedIn ? "Account" : "Sign in"}
           </Link>
 
           <button
