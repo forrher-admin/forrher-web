@@ -25,17 +25,32 @@ const features = [
 
 export function FeatureCards() {
   return (
-    <ul className="grid gap-4 sm:grid-cols-2">
-      {features.map((feature) => (
+    <ul className="divide-y divide-border border-y border-border">
+      {features.map((feature, index) => (
         <li key={feature.href}>
           <Link
             href={feature.href}
-            className="group flex h-full min-h-28 flex-col justify-between rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent hover:bg-accent-soft/40"
+            className="group flex items-baseline justify-between gap-6 py-6 transition-colors hover:bg-accent-soft/30"
           >
-            <h2 className="font-heading text-2xl text-primary group-hover:text-primary-hover">
-              {feature.title}
-            </h2>
-            <p className="mt-2 text-base text-muted">{feature.description}</p>
+            <div className="flex items-baseline gap-4 sm:gap-6">
+              <span className="font-heading text-sm text-gold">
+                0{index + 1}
+              </span>
+              <div>
+                <h2 className="font-heading text-2xl text-primary transition-colors group-hover:text-primary-hover sm:text-3xl">
+                  {feature.title}
+                </h2>
+                <p className="mt-1 max-w-xl text-base text-muted">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+            <span
+              aria-hidden="true"
+              className="text-xl text-accent transition-transform group-hover:translate-x-1"
+            >
+              →
+            </span>
           </Link>
         </li>
       ))}

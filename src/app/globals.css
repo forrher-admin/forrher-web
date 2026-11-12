@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Design tokens — single place for rebranding */
+/* Design tokens — single place for rebranding (update from logo when ready) */
 :root {
   --background: #faf7f5;
   --surface: #ffffff;
@@ -12,6 +12,9 @@
   --muted: #6e6270;
   --primary-hover: #4a2f4a;
   --accent-soft: #f3e6eb;
+  --mocha: #4a2c2a;
+  --cream: #f7ebe4;
+  --gold: #c5a07d;
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
@@ -29,6 +32,9 @@
   --color-muted: var(--muted);
   --color-primary-hover: var(--primary-hover);
   --color-accent-soft: var(--accent-soft);
+  --color-mocha: var(--mocha);
+  --color-cream: var(--cream);
+  --color-gold: var(--gold);
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
@@ -80,5 +86,46 @@
   summary:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .forrher-grain {
+    background-image: radial-gradient(
+      rgba(43, 31, 43, 0.045) 0.7px,
+      transparent 0.7px
+    );
+    background-size: 3px 3px;
+  }
+
+  .forrher-fade-up {
+    animation: forrher-fade-up 700ms ease-out both;
+  }
+
+  .forrher-fade-up-delay {
+    animation: forrher-fade-up 900ms ease-out 120ms both;
+  }
+
+  .forrher-fade-up-delay-2 {
+    animation: forrher-fade-up 900ms ease-out 220ms both;
+  }
+}
+
+@keyframes forrher-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forrher-fade-up,
+  .forrher-fade-up-delay,
+  .forrher-fade-up-delay-2 {
+    animation: none;
   }
 }

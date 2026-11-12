@@ -18,6 +18,9 @@ export function Footer() {
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-md">
             <Logo />
+            <p className="mt-2 text-sm tracking-[0.16em] text-gold uppercase">
+              Discreet · Dignified · Yours
+            </p>
             <p className="mt-3 text-base text-muted">
               Calm, practical support for everyday women&apos;s health questions.
             </p>
