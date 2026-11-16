@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { TodayFlowClient } from "@/components/today/TodayFlow";
 import { getTodayFlow } from "@/content/today/flows";
 import { getCurrentUser } from "@/lib/auth";
+import { routeQueryToSituation } from "@/lib/today/route-query";
 
 export const instant = false;
 
@@ -16,13 +17,19 @@ async function TodayContent({
   searchParams: Promise<{ situation?: string; q?: string }>;
 }) {
   const params = await searchParams;
-  const flow = getTodayFlow(params.situation);
+  const query = params.q?.trim();
+  const routedSlug = params.situation
+    ? undefined
+    : routeQueryToSituation(query);
+  const situationSlug = params.situation ?? routedSlug;
+  const flow = getTodayFlow(situationSlug);
   const user = await getCurrentUser();
 
   return (
     <TodayFlowClient
       flow={flow}
-      query={params.q?.trim()}
+      query={query}
+      routedFromQuery={Boolean(!params.situation && routedSlug)}
       isLoggedIn={Boolean(user)}
     />
   );
