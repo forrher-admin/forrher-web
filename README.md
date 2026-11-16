@@ -46,9 +46,12 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Health check: [http://localhost:3000/api/health](http://localhost:3000/api/health) should return `{"ok":true}`.
 
-## Stage 2 features
+## Stage 2+ features
 
-- **Today**: guided situation flow with calm suggestions
+- **Today**: guided situation flow with personalized Learn/Tool/Shop suggestions
+- **Ask routing**: keyword match from home search `?q=` into a Today situation
+- **Tools**: JSON-driven framework with 4 launch tools (checklist, kit, workday plan, doctor questions)
+- **Shop**: Private Pouch + Everyday Organizer catalogue pages
 - **Learn**: published articles from Supabase + related links
 - **Account**: email/password auth, saved items, deletion request
 - **Admin**: `/admin/learn` article editor (admin role only)
