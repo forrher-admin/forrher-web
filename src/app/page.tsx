@@ -9,7 +9,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { shopProducts } from "@/content/shop/products";
 
 export default function HomePage() {
-  const featured = shopProducts.slice(0, 2);
+  const [first, second] = shopProducts;
 
   return (
     <div>
@@ -44,11 +44,13 @@ export default function HomePage() {
             >
               <div className="relative aspect-[5/6] overflow-hidden rounded-[1.1rem] bg-cream-deep sm:aspect-[4/5]">
                 <Image
-                  src="/shop/period-everyday-organizer-product.jpg"
-                  alt="ForrHer Period and Everyday Organizer"
+                  src={
+                    first?.image ?? "/shop/period-private-pouch-hero.jpg"
+                  }
+                  alt={first?.imageAlt ?? "ForrHer shop"}
                   fill
                   priority
-                  className="product-crop-hero"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   sizes="(max-width: 1024px) 92vw, 40vw"
                 />
               </div>
@@ -77,7 +79,7 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="Shop"
                 title="Starter products"
-                description="Two thoughtful pieces for privacy, readiness, and everyday dignity."
+                description="Two pieces made to feel calm in the hand — and easy to explain to someone you care about."
               />
               <Link
                 href="/shop"
@@ -88,46 +90,79 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <ul className="mt-10 grid gap-6 lg:grid-cols-2">
-            {featured.map((product, index) => (
-              <li key={product.slug}>
-                <Reveal>
-                  <Link
-                    href={`/shop/${product.slug}`}
-                    className="forrher-press group grid overflow-hidden rounded-2xl border border-border bg-surface sm:grid-cols-[0.85fr_1.15fr]"
-                  >
-                    <div className="relative aspect-[4/5] overflow-hidden bg-cream-deep sm:aspect-auto sm:min-h-60">
-                      <Image
-                        src={product.image}
-                        alt={product.imageAlt}
-                        fill
-                        className={
-                          index === 0
-                            ? "product-crop-pouch"
-                            : "product-crop-organizer"
-                        }
-                        sizes="(max-width: 768px) 100vw, 28vw"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-center p-5 sm:p-6">
-                      <p className="text-sm font-medium tracking-[0.12em] text-gold uppercase">
-                        {product.tagline}
-                      </p>
-                      <h3 className="mt-2 font-heading text-2xl text-mocha">
-                        {product.name}
-                      </h3>
-                      <p className="mt-3 text-base text-muted">
-                        {product.summary}
-                      </p>
-                      <span className="mt-5 text-base text-mocha underline underline-offset-4">
-                        View product
-                      </span>
-                    </div>
-                  </Link>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-10 space-y-8">
+            {first ? (
+              <Reveal>
+                <Link
+                  href={`/shop/${first.slug}`}
+                  className="forrher-press group grid overflow-hidden rounded-[1.5rem] border border-border bg-surface lg:grid-cols-[1.05fr_0.95fr]"
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden bg-cream lg:aspect-auto lg:min-h-[26rem]">
+                    <Image
+                      src={first.image}
+                      alt={first.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                    <p className="text-sm font-medium tracking-[0.14em] text-gold uppercase">
+                      {first.tagline}
+                    </p>
+                    <h3 className="mt-3 font-heading text-3xl text-mocha sm:text-4xl">
+                      {first.name}
+                    </h3>
+                    <p className="mt-4 text-base text-muted sm:text-lg">
+                      {first.summary}
+                    </p>
+                    <p className="mt-5 font-heading text-xl text-mocha">
+                      {first.promise}
+                    </p>
+                    <span className="mt-6 inline-flex min-h-11 items-center text-base text-mocha underline underline-offset-4">
+                      View product
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ) : null}
+
+            {second ? (
+              <Reveal>
+                <Link
+                  href={`/shop/${second.slug}`}
+                  className="forrher-press group grid overflow-hidden rounded-[1.5rem] border border-border bg-cream/60 lg:grid-cols-[0.95fr_1.05fr]"
+                >
+                  <div className="order-2 flex flex-col justify-center p-6 sm:p-8 lg:order-1 lg:p-10">
+                    <p className="text-sm font-medium tracking-[0.14em] text-gold uppercase">
+                      {second.tagline}
+                    </p>
+                    <h3 className="mt-3 font-heading text-3xl text-mocha sm:text-4xl">
+                      {second.name}
+                    </h3>
+                    <p className="mt-4 text-base text-muted sm:text-lg">
+                      {second.summary}
+                    </p>
+                    <p className="mt-5 font-heading text-xl text-mocha">
+                      {second.promise}
+                    </p>
+                    <span className="mt-6 inline-flex min-h-11 items-center text-base text-mocha underline underline-offset-4">
+                      View product
+                    </span>
+                  </div>
+                  <div className="relative order-1 aspect-[4/5] overflow-hidden bg-cream-deep lg:order-2 lg:aspect-auto lg:min-h-[26rem]">
+                    <Image
+                      src={second.image}
+                      alt={second.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                </Link>
+              </Reveal>
+            ) : null}
+          </div>
         </div>
       </section>
 
