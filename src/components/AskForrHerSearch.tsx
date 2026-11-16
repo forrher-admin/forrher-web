@@ -3,7 +3,7 @@ export function AskForrHerSearch() {
     <form
       action="/today"
       method="get"
-      className="rounded-2xl border border-border bg-surface p-1.5 shadow-[0_18px_40px_rgba(61,36,32,0.06)]"
+      className="rounded-xl border border-border bg-surface p-1.5"
       role="search"
       aria-label="Ask ForrHer"
     >
@@ -16,11 +16,11 @@ export function AskForrHerSearch() {
           name="q"
           type="search"
           placeholder="Ask ForrHer anything…"
-          className="min-h-11 w-full flex-1 rounded-xl border-0 bg-transparent px-4 text-base text-text placeholder:text-muted focus:outline-none"
+          className="min-h-11 w-full flex-1 rounded-lg border-0 bg-transparent px-3.5 text-base text-text placeholder:text-muted focus:outline-none"
         />
         <button
           type="submit"
-          className="forrher-press inline-flex min-h-11 items-center justify-center rounded-xl bg-mocha px-5 text-base text-on-primary hover:bg-primary-hover"
+          className="forrher-press inline-flex min-h-11 items-center justify-center rounded-lg bg-mocha px-5 text-base text-on-primary hover:bg-primary-hover"
         >
           Ask
         </button>

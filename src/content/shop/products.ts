@@ -27,8 +27,8 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Discreet · Dignified · Yours",
     summary:
       "A sleek, leak-resistant pouch for safe, discreet, and hygienic disposal of used menstrual products — anywhere, anytime.",
-    image: "/shop/period-private-pouch.jpg",
-    imageAlt: "ForrHer Period Private Pouch product overview",
+    image: "/shop/period-private-pouch-product.jpg",
+    imageAlt: "ForrHer Period Private Pouch",
     benefits: [
       "Leak-resistant moisture-lock material",
       "Secure seal for complete privacy",
@@ -62,8 +62,8 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Prepare · Protect · Empower",
     summary:
       "More than a bag — self-care in a pouch. A calm organizer for period essentials and everyday comfort items.",
-    image: "/shop/period-everyday-organizer.jpg",
-    imageAlt: "ForrHer Period and Everyday Organizer product overview",
+    image: "/shop/period-everyday-organizer-product.jpg",
+    imageAlt: "ForrHer Period and Everyday Organizer",
     benefits: [
       "Privacy and dignity",
       "Stay organised",

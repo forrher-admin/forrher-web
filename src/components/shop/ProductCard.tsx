@@ -16,13 +16,13 @@ export function ProductCard({
       href={`/shop/${product.slug}`}
       className="forrher-press group block overflow-hidden rounded-2xl border border-border bg-surface"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-cream-deep">
+      <div className="relative aspect-[4/5] overflow-hidden bg-cream-deep">
         <Image
           src={product.image}
           alt={product.imageAlt}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className={`${cropClass} transition-transform duration-500 group-hover:scale-[1.03]`}
+          className={cropClass}
         />
       </div>
       <div className="space-y-3 p-5 sm:p-6">

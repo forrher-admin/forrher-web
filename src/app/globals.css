@@ -164,16 +164,12 @@
     transform: translateY(0);
   }
 
-  .product-crop-pouch {
+  /* Pre-cropped product photos — simple cover framing */
+  .product-crop-pouch,
+  .product-crop-organizer,
+  .product-crop-hero {
     object-fit: cover;
-    object-position: 58% 28%;
-    transform: scale(1.35);
-  }
-
-  .product-crop-organizer {
-    object-fit: cover;
-    object-position: 48% 22%;
-    transform: scale(1.45);
+    object-position: center;
   }
 }
 
