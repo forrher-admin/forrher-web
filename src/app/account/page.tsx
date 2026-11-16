@@ -30,7 +30,7 @@ export default async function AccountPage() {
 
   return (
     <section className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-      <h1 className="font-heading text-3xl text-text sm:text-4xl">Account</h1>
+      <h1 className="font-heading text-3xl text-mocha sm:text-4xl">Account</h1>
       <p className="mt-3 text-lg text-muted">
         Signed in as {profile?.email ?? user.email}
       </p>
@@ -38,14 +38,14 @@ export default async function AccountPage() {
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
           href="/account/saved"
-          className="inline-flex min-h-11 items-center rounded-md bg-primary px-4 text-base text-surface hover:bg-primary-hover"
+          className="forrher-press inline-flex min-h-11 items-center rounded-xl bg-mocha px-4 text-base text-on-primary hover:bg-primary-hover"
         >
           Saved items
         </Link>
         {profile?.role === "admin" ? (
           <Link
             href="/admin/learn"
-            className="inline-flex min-h-11 items-center rounded-md border border-border bg-surface px-4 text-base text-text hover:bg-accent-soft"
+            className="forrher-press inline-flex min-h-11 items-center rounded-xl border border-border bg-surface px-4 text-base text-text hover:bg-cream"
           >
             Learn admin
           </Link>
@@ -53,7 +53,7 @@ export default async function AccountPage() {
         <form action={signOutAction}>
           <button
             type="submit"
-            className="inline-flex min-h-11 items-center rounded-md border border-border bg-surface px-4 text-base text-text hover:bg-accent-soft"
+            className="forrher-press inline-flex min-h-11 items-center rounded-xl border border-border bg-surface px-4 text-base text-text hover:bg-cream"
           >
             Sign out
           </button>
@@ -73,7 +73,7 @@ export default async function AccountPage() {
               <li key={item.id}>
                 <Link
                   href={item.href}
-                  className="text-base text-primary underline underline-offset-2"
+                  className="text-base text-mocha underline underline-offset-4"
                 >
                   {item.title}
                 </Link>

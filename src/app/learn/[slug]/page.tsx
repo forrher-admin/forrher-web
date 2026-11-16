@@ -51,8 +51,8 @@ export default async function LearnArticlePage({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <p className="text-sm text-accent">{article.category}</p>
-      <h1 className="mt-2 font-heading text-4xl text-text">{article.title}</h1>
+      <p className="text-sm font-medium text-gold">{article.category}</p>
+      <h1 className="mt-2 font-heading text-4xl text-mocha">{article.title}</h1>
       <p className="mt-4 text-lg text-muted">{article.summary}</p>
 
       <dl className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
@@ -92,7 +92,7 @@ export default async function LearnArticlePage({
               <li key={item.id}>
                 <Link
                   href={`/learn/${item.slug}`}
-                  className="text-base text-primary underline underline-offset-2"
+                  className="text-base text-mocha underline underline-offset-4"
                 >
                   {item.title}
                 </Link>

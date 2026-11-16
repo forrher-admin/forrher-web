@@ -22,7 +22,7 @@ export function SaveItemButton({ isLoggedIn, item }: SaveItemButtonProps) {
     return (
       <Link
         href="/account/login"
-        className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-base text-surface hover:bg-primary-hover"
+        className="forrher-press inline-flex min-h-11 items-center justify-center rounded-xl bg-mocha px-4 text-base text-on-primary hover:bg-primary-hover"
       >
         Sign in to save
       </Link>
@@ -40,7 +40,7 @@ export function SaveItemButton({ isLoggedIn, item }: SaveItemButtonProps) {
             setMessage(result.message);
           });
         }}
-        className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-base text-surface hover:bg-primary-hover disabled:opacity-60"
+        className="forrher-press inline-flex min-h-11 items-center justify-center rounded-xl bg-mocha px-4 text-base text-on-primary hover:bg-primary-hover disabled:opacity-60"
       >
         {pending ? "Saving…" : "Save for later"}
       </button>

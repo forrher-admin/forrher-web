@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PageShell } from "@/components/ui/PageShell";
+import { SoftPanel } from "@/components/ui/SoftPanel";
 import { getShopProduct, shopProducts } from "@/content/shop/products";
 
 export const instant = false;
@@ -28,9 +30,13 @@ export default async function ShopProductPage({
   const product = getShopProduct(slug);
   if (!product) notFound();
 
+  const cropClass = slug.includes("pouch")
+    ? "product-crop-pouch"
+    : "product-crop-organizer";
+
   return (
-    <article className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-      <p className="text-sm tracking-[0.16em] text-gold uppercase">
+    <PageShell>
+      <p className="text-sm font-medium tracking-[0.12em] text-gold uppercase">
         {product.tagline}
       </p>
       <h1 className="mt-3 font-heading text-4xl text-mocha sm:text-5xl">
@@ -39,19 +45,19 @@ export default async function ShopProductPage({
       <p className="mt-4 max-w-2xl text-lg text-muted">{product.summary}</p>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-cream">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-cream-deep">
           <Image
             src={product.image}
             alt={product.imageAlt}
             fill
             priority
-            className="object-cover"
+            className={cropClass}
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>
 
-        <div className="space-y-8">
-          <section>
+        <div className="space-y-6 lg:sticky lg:top-28">
+          <SoftPanel>
             <h2 className="font-heading text-2xl text-text">Key benefits</h2>
             <ul className="mt-4 space-y-2">
               {product.benefits.map((benefit) => (
@@ -60,9 +66,9 @@ export default async function ShopProductPage({
                 </li>
               ))}
             </ul>
-          </section>
+          </SoftPanel>
 
-          <section>
+          <SoftPanel>
             <h2 className="font-heading text-2xl text-text">Details</h2>
             <ul className="mt-4 space-y-2">
               {product.details.map((detail) => (
@@ -71,10 +77,10 @@ export default async function ShopProductPage({
                 </li>
               ))}
             </ul>
-          </section>
+          </SoftPanel>
 
           {product.colors ? (
-            <section>
+            <SoftPanel>
               <h2 className="font-heading text-2xl text-text">Colors</h2>
               <ul className="mt-4 space-y-3">
                 {product.colors.map((color) => (
@@ -85,11 +91,11 @@ export default async function ShopProductPage({
                   </li>
                 ))}
               </ul>
-            </section>
+            </SoftPanel>
           ) : null}
 
           {product.howItWorks ? (
-            <section>
+            <SoftPanel>
               <h2 className="font-heading text-2xl text-text">How it works</h2>
               <ol className="mt-4 space-y-3">
                 {product.howItWorks.map((item, index) => (
@@ -102,24 +108,17 @@ export default async function ShopProductPage({
                   </li>
                 ))}
               </ol>
-            </section>
+            </SoftPanel>
           ) : null}
 
-          <section>
-            <h2 className="font-heading text-2xl text-text">Perfect for</h2>
-            <p className="mt-3 text-base text-muted">
-              {product.perfectFor.join(" · ")}
-            </p>
-          </section>
-
-          <div className="rounded-2xl border border-border bg-surface p-5">
-            <p className="text-base text-muted">{product.priceLabel}</p>
+          <SoftPanel className="bg-mocha text-on-primary">
+            <p className="text-base text-cream">{product.priceLabel}</p>
             {product.paymentLink ? (
               <a
                 href={product.paymentLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex min-h-11 items-center justify-center rounded-md bg-mocha px-5 text-base text-cream transition-opacity hover:opacity-90"
+                className="forrher-press mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-gold px-5 text-base text-mocha"
               >
                 Buy with Paystack
               </a>
@@ -127,26 +126,30 @@ export default async function ShopProductPage({
               <button
                 type="button"
                 disabled
-                className="mt-4 inline-flex min-h-11 cursor-not-allowed items-center justify-center rounded-md bg-mocha/70 px-5 text-base text-cream"
+                className="mt-4 inline-flex min-h-11 cursor-not-allowed items-center justify-center rounded-xl bg-cream/20 px-5 text-base text-on-primary"
               >
                 Checkout coming soon
               </button>
             )}
-            <p className="mt-3 text-sm text-muted">
+            <p className="mt-3 text-sm text-cream/80">
               Live M-Pesa and card payment links will be added with Paystack.
             </p>
-          </div>
+          </SoftPanel>
+
+          <p className="text-base text-muted">
+            Perfect for: {product.perfectFor.join(" · ")}
+          </p>
         </div>
       </div>
 
       <p className="mt-12">
         <Link
           href="/shop"
-          className="text-base text-muted underline underline-offset-2"
+          className="text-base text-muted underline underline-offset-4 hover:text-mocha"
         >
           Back to shop
         </Link>
       </p>
-    </article>
+    </PageShell>
   );
 }

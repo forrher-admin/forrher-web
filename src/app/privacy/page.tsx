@@ -6,7 +6,7 @@ export const metadata = {
 export default function PrivacyPage() {
   return (
     <section className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-      <h1 className="font-heading text-3xl text-text sm:text-4xl">Privacy</h1>
+      <h1 className="font-heading text-3xl text-mocha sm:text-4xl">Privacy</h1>
       <div className="mt-6 space-y-4 text-base text-muted">
         {/* PLACEHOLDER: replace with ForrHer-approved content */}
         <p>

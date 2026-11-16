@@ -42,6 +42,21 @@ export const saveItemSchema = z.object({
   href: z.string().trim().min(1).max(300),
 });
 
+export const spaceEnquirySchema = z.object({
+  name: z.string().trim().min(2, "Please share your name.").max(120),
+  organisation: z
+    .string()
+    .trim()
+    .min(2, "Please share your organisation.")
+    .max(160),
+  email: z.string().trim().email("Enter a valid email address."),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Please add a short message.")
+    .max(2000),
+});
+
 export function slugifyTitle(title: string) {
   return title
     .toLowerCase()

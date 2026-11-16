@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
-/* Design tokens — single place for rebranding (update from logo when ready) */
+/* Design tokens — single place for rebranding (interim: product mocha/cream/gold) */
 :root {
-  --background: #faf7f5;
+  --background: #fbf7f2;
   --surface: #ffffff;
-  --text: #2b1f2b;
-  --primary: #5b3a5b;
-  --accent: #b5738a;
+  --cream: #f6eee6;
+  --text: #3d2420;
+  --primary: #3d2420;
+  --primary-hover: #2c1916;
+  --accent: #b8926a;
+  --gold: #b8926a;
   --sage: #dce6dd;
-  --border: #e8dfe3;
-  --muted: #6e6270;
-  --primary-hover: #4a2f4a;
-  --accent-soft: #f3e6eb;
-  --mocha: #4a2c2a;
-  --cream: #f7ebe4;
-  --gold: #c5a07d;
+  --border: #e6d9cf;
+  --muted: #7a6a62;
+  --accent-soft: #f1e4d8;
+  --mocha: #3d2420;
+  --cream-deep: #efe3d7;
+  --on-primary: #fbf7f2;
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
@@ -24,17 +26,19 @@
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
   --color-text: var(--text);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-accent: var(--accent);
+  --color-gold: var(--gold);
   --color-sage: var(--sage);
   --color-border: var(--border);
   --color-muted: var(--muted);
-  --color-primary-hover: var(--primary-hover);
   --color-accent-soft: var(--accent-soft);
   --color-mocha: var(--mocha);
-  --color-cream: var(--cream);
-  --color-gold: var(--gold);
+  --color-on-primary: var(--on-primary);
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
@@ -67,7 +71,7 @@
     color: var(--text);
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   h1,
@@ -75,46 +79,108 @@
   h3,
   h4 {
     font-family: var(--font-heading);
-    font-weight: 560;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    font-weight: 550;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--text);
   }
 
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
+  textarea:focus-visible,
   summary:focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--gold);
     outline-offset: 2px;
   }
 }
 
-@layer utilities {
-  .forrher-grain {
-    background-image: radial-gradient(
-      rgba(43, 31, 43, 0.045) 0.7px,
-      transparent 0.7px
-    );
-    background-size: 3px 3px;
+@layer components {
+  .forrher-input {
+    min-height: 2.75rem;
+    width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 0.65rem 0.9rem;
+    font-size: 1rem;
+    color: var(--text);
   }
 
+  .forrher-input:focus {
+    border-color: var(--gold);
+  }
+
+  .forrher-textarea {
+    width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 0.75rem 0.9rem;
+    font-size: 1rem;
+    color: var(--text);
+  }
+}
+
+@layer utilities {
   .forrher-fade-up {
     animation: forrher-fade-up 700ms ease-out both;
   }
 
   .forrher-fade-up-delay {
-    animation: forrher-fade-up 900ms ease-out 120ms both;
+    animation: forrher-fade-up 850ms ease-out 100ms both;
   }
 
   .forrher-fade-up-delay-2 {
-    animation: forrher-fade-up 900ms ease-out 220ms both;
+    animation: forrher-fade-up 850ms ease-out 180ms both;
+  }
+
+  .forrher-press {
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease,
+      background-color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .forrher-press:hover {
+    transform: translateY(-1px);
+  }
+
+  .forrher-press:active {
+    transform: translateY(0);
+  }
+
+  .forrher-reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 600ms ease,
+      transform 600ms ease;
+  }
+
+  .forrher-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .product-crop-pouch {
+    object-fit: cover;
+    object-position: 58% 28%;
+    transform: scale(1.35);
+  }
+
+  .product-crop-organizer {
+    object-fit: cover;
+    object-position: 48% 22%;
+    transform: scale(1.45);
   }
 }
 
 @keyframes forrher-fade-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -127,6 +193,17 @@
   .forrher-fade-up-delay,
   .forrher-fade-up-delay-2 {
     animation: none;
+  }
+
+  .forrher-press:hover,
+  .forrher-press:active {
+    transform: none;
+  }
+
+  .forrher-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

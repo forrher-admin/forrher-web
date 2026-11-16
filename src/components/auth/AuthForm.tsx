@@ -18,7 +18,7 @@ export function AuthForm({ action, submitLabel, pendingLabel }: AuthFormProps) {
   const [state, formAction, pending] = useActionState(action, initialState);
 
   return (
-    <form action={formAction} className="space-y-4">
+    <form action={formAction} className="space-y-4 rounded-2xl border border-border bg-cream/50 p-5 sm:p-6">
       <div>
         <label htmlFor="email" className="block text-base text-text">
           Email
@@ -29,7 +29,7 @@ export function AuthForm({ action, submitLabel, pendingLabel }: AuthFormProps) {
           type="email"
           autoComplete="email"
           required
-          className="mt-1 min-h-11 w-full rounded-md border border-border bg-surface px-3 text-base text-text"
+          className="forrher-input mt-1"
         />
       </div>
       <div>
@@ -43,17 +43,17 @@ export function AuthForm({ action, submitLabel, pendingLabel }: AuthFormProps) {
           autoComplete="current-password"
           required
           minLength={8}
-          className="mt-1 min-h-11 w-full rounded-md border border-border bg-surface px-3 text-base text-text"
+          className="forrher-input mt-1"
         />
       </div>
 
       {state.error ? (
-        <p className="text-base text-accent" role="alert">
+        <p className="text-base text-mocha" role="alert">
           {state.error}
         </p>
       ) : null}
       {state.success ? (
-        <p className="text-base text-primary" role="status">
+        <p className="text-base text-muted" role="status">
           {state.success}
         </p>
       ) : null}
@@ -61,7 +61,7 @@ export function AuthForm({ action, submitLabel, pendingLabel }: AuthFormProps) {
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-primary px-4 text-base text-surface hover:bg-primary-hover disabled:opacity-60"
+        className="forrher-press inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-mocha px-4 text-base text-on-primary hover:bg-primary-hover disabled:opacity-60"
       >
         {pending ? pendingLabel : submitLabel}
       </button>

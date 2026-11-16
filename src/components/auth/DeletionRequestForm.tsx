@@ -15,8 +15,13 @@ export function DeletionRequestForm() {
   );
 
   return (
-    <form action={formAction} className="space-y-4 rounded-xl border border-border bg-surface p-5">
-      <h2 className="font-heading text-2xl text-text">Request account deletion</h2>
+    <form
+      action={formAction}
+      className="space-y-4 rounded-2xl border border-border bg-cream/50 p-5 sm:p-6"
+    >
+      <h2 className="font-heading text-2xl text-mocha">
+        Request account deletion
+      </h2>
       <p className="text-base text-muted">
         Type DELETE to confirm. This records your request. Processing is manual
         until automated deletion email is enabled.
@@ -29,24 +34,24 @@ export function DeletionRequestForm() {
           id="confirm"
           name="confirm"
           required
-          className="mt-1 min-h-11 w-full rounded-md border border-border px-3 text-base"
+          className="forrher-input mt-1"
           placeholder="DELETE"
         />
       </div>
       {state.error ? (
-        <p className="text-base text-accent" role="alert">
+        <p className="text-base text-mocha" role="alert">
           {state.error}
         </p>
       ) : null}
       {state.success ? (
-        <p className="text-base text-primary" role="status">
+        <p className="text-base text-muted" role="status">
           {state.success}
         </p>
       ) : null}
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex min-h-11 items-center justify-center rounded-md border border-border px-4 text-base text-text hover:bg-accent-soft disabled:opacity-60"
+        className="forrher-press inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-surface px-4 text-base text-text hover:bg-cream disabled:opacity-60"
       >
         {pending ? "Sending…" : "Submit deletion request"}
       </button>

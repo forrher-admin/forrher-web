@@ -137,12 +137,12 @@ export function ArticleForm({ article, action }: ArticleFormProps) {
       </label>
 
       {state.error ? (
-        <p className="text-base text-accent" role="alert">
+        <p className="text-base text-mocha" role="alert">
           {state.error}
         </p>
       ) : null}
       {state.success ? (
-        <p className="text-base text-primary" role="status">
+        <p className="text-base text-muted" role="status">
           {state.success}
         </p>
       ) : null}
@@ -150,7 +150,7 @@ export function ArticleForm({ article, action }: ArticleFormProps) {
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-5 text-base text-surface hover:bg-primary-hover disabled:opacity-60"
+        className="forrher-press inline-flex min-h-11 items-center justify-center rounded-xl bg-mocha px-5 text-base text-on-primary hover:bg-primary-hover disabled:opacity-60"
       >
         {pending ? "Saving…" : "Save article"}
       </button>

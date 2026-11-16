@@ -31,7 +31,7 @@ export function Markdown({ content, className = "" }: MarkdownProps) {
           a: ({ href, children }) => (
             <a
               href={href}
-              className="text-primary underline underline-offset-2"
+              className="text-mocha underline underline-offset-4"
             >
               {children}
             </a>

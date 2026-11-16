@@ -22,7 +22,7 @@ async function RemoveButton({ id }: { id: string }) {
     >
       <button
         type="submit"
-        className="inline-flex min-h-11 items-center rounded-md border border-border px-3 text-sm text-muted hover:bg-accent-soft"
+        className="forrher-press inline-flex min-h-11 items-center rounded-xl border border-border px-3 text-sm text-muted hover:bg-cream"
       >
         Remove
       </button>
@@ -45,7 +45,7 @@ export default async function SavedItemsPage() {
 
   return (
     <section className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-      <h1 className="font-heading text-3xl text-text">Saved items</h1>
+      <h1 className="font-heading text-3xl text-mocha">Saved items</h1>
       <p className="mt-3 text-base text-muted">
         Your private list of Today results and Learn articles.
       </p>
@@ -57,13 +57,13 @@ export default async function SavedItemsPage() {
           {items.map((item) => (
             <li
               key={item.id}
-              className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-border bg-surface px-4 py-3"
+              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-cream/50 px-4 py-3"
             >
               <div>
-                <p className="text-sm capitalize text-accent">{item.item_type}</p>
+                <p className="text-sm capitalize text-gold">{item.item_type}</p>
                 <Link
                   href={item.href}
-                  className="text-base text-primary underline underline-offset-2"
+                  className="text-base text-mocha underline underline-offset-4"
                 >
                   {item.title}
                 </Link>
@@ -75,7 +75,10 @@ export default async function SavedItemsPage() {
       )}
 
       <p className="mt-8">
-        <Link href="/account" className="text-base text-muted underline underline-offset-2">
+        <Link
+          href="/account"
+          className="text-base text-muted underline underline-offset-4"
+        >
           Back to account
         </Link>
       </p>

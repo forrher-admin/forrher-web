@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ProfessionalNote } from "@/components/ProfessionalNote";
 import { SaveItemButton } from "@/components/SaveItemButton";
+import { ProgressRail } from "@/components/ui/ProgressRail";
+import { SoftPanel } from "@/components/ui/SoftPanel";
 import type { ToolDefinition, ToolStep } from "@/content/tools/types";
 
 type ToolRunnerProps = {
@@ -80,17 +82,17 @@ export function ToolRunner({ tool, isLoggedIn }: ToolRunnerProps) {
   return (
     <div className="space-y-8">
       <div>
-        <p className="text-sm tracking-[0.14em] text-gold uppercase">
+        <p className="text-sm font-medium tracking-[0.12em] text-gold uppercase">
           ForrHer Tools
         </p>
-        <h1 className="mt-2 font-heading text-3xl text-text sm:text-4xl">
+        <h1 className="mt-2 font-heading text-3xl text-mocha sm:text-4xl">
           {tool.title}
         </h1>
         <p className="mt-4 text-lg text-muted">{tool.intro}</p>
       </div>
 
       {!finished && step ? (
-        <div className="rounded-2xl border border-border bg-surface p-5 sm:p-6">
+        <SoftPanel className="bg-surface">
           <div className="flex items-center justify-between gap-3">
             <p className="text-sm text-muted">
               Step {stepIndex + 1} of {tool.steps.length}
@@ -99,18 +101,13 @@ export function ToolRunner({ tool, isLoggedIn }: ToolRunnerProps) {
               <button
                 type="button"
                 onClick={goBack}
-                className="inline-flex min-h-11 items-center text-base text-primary underline underline-offset-2"
+                className="inline-flex min-h-11 items-center text-base text-mocha underline underline-offset-4"
               >
                 Back
               </button>
             ) : null}
           </div>
-          <div className="mt-3 h-2 overflow-hidden rounded-full bg-accent-soft" aria-hidden="true">
-            <div
-              className="h-full rounded-full bg-primary transition-all"
-              style={{ width: `${Math.max(progress, 8)}%` }}
-            />
-          </div>
+          <ProgressRail value={Math.max(progress, 8)} className="mt-3" />
           <h2 className="mt-5 font-heading text-2xl text-text">{step.question}</h2>
           {step.help ? (
             <p className="mt-2 text-base text-muted">{step.help}</p>
@@ -132,10 +129,10 @@ export function ToolRunner({ tool, isLoggedIn }: ToolRunnerProps) {
                         ? chooseSingle(option.id)
                         : toggleMulti(option.id)
                     }
-                    className={`flex min-h-11 w-full items-center rounded-xl border px-4 text-left text-base transition-colors ${
+                    className={`forrher-press flex min-h-11 w-full items-center rounded-xl border px-4 text-left text-base transition-colors ${
                       selected
-                        ? "border-primary bg-accent-soft text-text"
-                        : "border-border text-text hover:border-gold hover:bg-cream"
+                        ? "border-mocha bg-cream text-text"
+                        : "border-border bg-cream/40 text-text hover:border-gold hover:bg-cream"
                     }`}
                     aria-pressed={step.type === "multi" ? selected : undefined}
                   >
@@ -154,17 +151,17 @@ export function ToolRunner({ tool, isLoggedIn }: ToolRunnerProps) {
                 !Array.isArray(answers[step.id]) ||
                 (answers[step.id] as string[]).length === 0
               }
-              className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-5 text-base text-surface hover:bg-primary-hover disabled:opacity-50"
+              className="forrher-press mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-mocha px-5 text-base text-on-primary hover:bg-primary-hover disabled:opacity-50"
             >
               Continue
             </button>
           ) : null}
-        </div>
+        </SoftPanel>
       ) : null}
 
       {finished ? (
         <div className="space-y-6">
-          <div className="rounded-2xl border border-border bg-surface p-5 sm:p-6 print:border-0 print:p-0">
+          <SoftPanel className="bg-cream print:border-0 print:bg-transparent print:p-0">
             <h2 className="font-heading text-2xl text-text">{tool.resultTitle}</h2>
             <p className="mt-2 text-base text-muted">{tool.resultIntro}</p>
             <ol className="mt-5 list-decimal space-y-3 pl-5 text-base text-text">
@@ -172,7 +169,7 @@ export function ToolRunner({ tool, isLoggedIn }: ToolRunnerProps) {
                 <li key={line}>{line}</li>
               ))}
             </ol>
-          </div>
+          </SoftPanel>
 
           {tool.learnLinks.length > 0 ? (
             <section>
@@ -182,7 +179,7 @@ export function ToolRunner({ tool, isLoggedIn }: ToolRunnerProps) {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-base text-primary underline underline-offset-2"
+                      className="text-base text-mocha underline underline-offset-4"
                     >
                       {link.label}
                     </Link>
@@ -196,20 +193,20 @@ export function ToolRunner({ tool, isLoggedIn }: ToolRunnerProps) {
             <button
               type="button"
               onClick={printResult}
-              className="inline-flex min-h-11 items-center justify-center rounded-md bg-mocha px-4 text-base text-cream hover:opacity-90"
+              className="forrher-press inline-flex min-h-11 items-center justify-center rounded-xl bg-mocha px-4 text-base text-on-primary hover:bg-primary-hover"
             >
               Print or save as PDF
             </button>
             <button
               type="button"
               onClick={restart}
-              className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-surface px-4 text-base text-text hover:bg-accent-soft"
+              className="forrher-press inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-surface px-4 text-base text-text hover:bg-cream"
             >
               Start again
             </button>
             <Link
               href="/tools"
-              className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-surface px-4 text-base text-text hover:bg-accent-soft"
+              className="forrher-press inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-surface px-4 text-base text-text hover:bg-cream"
             >
               All tools
             </Link>

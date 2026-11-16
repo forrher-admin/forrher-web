@@ -43,8 +43,8 @@ export function Header({ isLoggedIn = false }: HeaderProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-cream/85 backdrop-blur-md">
+      <div className="mx-auto flex min-h-[4.25rem] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Logo className="relative z-10" />
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
@@ -55,10 +55,10 @@ export function Header({ isLoggedIn = false }: HeaderProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`inline-flex min-h-11 items-center rounded-md px-3 text-base transition-colors ${
+                className={`forrher-press inline-flex min-h-11 items-center rounded-full px-3.5 text-base transition-colors ${
                   active
-                    ? "bg-accent-soft text-primary"
-                    : "text-muted hover:bg-accent-soft/60 hover:text-text"
+                    ? "bg-mocha text-on-primary"
+                    : "text-muted hover:bg-cream-deep hover:text-text"
                 }`}
                 aria-current={active ? "page" : undefined}
               >
@@ -72,14 +72,14 @@ export function Header({ isLoggedIn = false }: HeaderProps) {
           <Link
             href="/account"
             onClick={closeMenu}
-            className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 text-base text-surface transition-colors hover:bg-primary-hover"
+            className="forrher-press inline-flex min-h-11 items-center justify-center rounded-full bg-mocha px-4 text-base text-on-primary hover:bg-primary-hover"
           >
             {isLoggedIn ? "Account" : "Sign in"}
           </Link>
 
           <button
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border bg-surface text-text md:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-border bg-surface text-text md:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -110,7 +110,7 @@ export function Header({ isLoggedIn = false }: HeaderProps) {
       {open ? (
         <nav
           id={menuId}
-          className="border-t border-border bg-surface px-4 py-4 md:hidden"
+          className="border-t border-border bg-cream px-4 py-4 md:hidden"
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-1">
@@ -122,10 +122,10 @@ export function Header({ isLoggedIn = false }: HeaderProps) {
                   <Link
                     href={link.href}
                     onClick={closeMenu}
-                    className={`flex min-h-11 items-center rounded-md px-3 text-base ${
+                    className={`flex min-h-11 items-center rounded-xl px-3 text-base ${
                       active
-                        ? "bg-accent-soft text-primary"
-                        : "text-text hover:bg-accent-soft/60"
+                        ? "bg-mocha text-on-primary"
+                        : "text-text hover:bg-cream-deep"
                     }`}
                     aria-current={active ? "page" : undefined}
                   >

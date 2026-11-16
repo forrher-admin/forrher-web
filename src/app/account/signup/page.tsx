@@ -17,7 +17,7 @@ export default async function SignupPage() {
 
   return (
     <section className="mx-auto max-w-md px-4 py-16 sm:px-6">
-      <h1 className="font-heading text-3xl text-text">Create account</h1>
+      <h1 className="font-heading text-3xl text-mocha">Create account</h1>
       <p className="mt-3 text-base text-muted">
         Use email and password. We only collect what we need to support your
         account.
@@ -31,7 +31,10 @@ export default async function SignupPage() {
       </div>
       <p className="mt-6 text-base text-muted">
         Already have an account?{" "}
-        <Link href="/account/login" className="text-primary underline underline-offset-2">
+        <Link
+          href="/account/login"
+          className="text-mocha underline underline-offset-4"
+        >
           Sign in
         </Link>
       </p>

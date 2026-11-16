@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { signInAction } from "@/app/actions/auth";
 import { AuthForm } from "@/components/auth/AuthForm";
 import { getCurrentUser } from "@/lib/auth";
-import { redirect } from "next/navigation";
 
 export const instant = false;
 
@@ -17,7 +17,7 @@ export default async function LoginPage() {
 
   return (
     <section className="mx-auto max-w-md px-4 py-16 sm:px-6">
-      <h1 className="font-heading text-3xl text-text">Sign in</h1>
+      <h1 className="font-heading text-3xl text-mocha">Sign in</h1>
       <p className="mt-3 text-base text-muted">
         Welcome back. Your saved items stay private to your account.
       </p>
@@ -30,7 +30,10 @@ export default async function LoginPage() {
       </div>
       <p className="mt-6 text-base text-muted">
         New here?{" "}
-        <Link href="/account/signup" className="text-primary underline underline-offset-2">
+        <Link
+          href="/account/signup"
+          className="text-mocha underline underline-offset-4"
+        >
           Create an account
         </Link>
       </p>
