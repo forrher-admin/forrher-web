@@ -45,13 +45,14 @@ export const shopProducts: ShopProduct[] = [
       "Secure seal for complete privacy",
       "Discreet design that looks like a regular pouch",
       "Compact and portable for bags or pockets",
-      "Durable and reusable for everyday use",
+      "Made for one-time hygienic disposal",
     ],
     perfectFor: ["Home", "Work", "School", "Travel", "Hotels", "Public spaces"],
     details: [
       "Stay confident when you need a private moment of care",
       "Keep disposal hygienic and contained",
       "Easy to carry without drawing attention",
+      "Single-use: seal after use and dispose in a bin",
     ],
     howItWorks: [
       { step: "Open", body: "Tear the notch or unseal the pouch." },
@@ -98,7 +99,7 @@ export const shopProducts: ShopProduct[] = [
       "Premium water-resistant material",
       "Smooth gold-toned zippers with comfort handle",
       "Thoughtful compartments for pads, liners, wipes, heat pad, and more",
-      "Includes space for Luna disposal pouches",
+      "Includes space for ForrHer Private Pouches",
     ],
     compartments: [
       { label: "Pads", body: "Space for 6–8 pads in varied sizes." },
@@ -111,7 +112,10 @@ export const shopProducts: ShopProduct[] = [
       { label: "Sweet treat", body: "A little kindness for hard days." },
       { label: "Hand cream & mirror", body: "Soft self-care on the go." },
       { label: "Secure zip pocket", body: "For what you want kept private." },
-      { label: "Luna pouch space", body: "Room for discreet disposal pouches." },
+      {
+        label: "Private Pouch pocket",
+        body: "Room for discreet ForrHer Private Pouches.",
+      },
     ],
     colors: [
       { name: "Sage Green", note: "Calm. Fresh. Natural.", swatch: "#DCE6DD" },

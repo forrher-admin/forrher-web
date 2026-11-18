@@ -1,4 +1,4 @@
-// PLACEHOLDER: replace with ForrHer-approved content
+// Interim health copy — replace when Mae sends ForrHer-approved tool copy
 import type { ToolDefinition } from "@/content/tools/types";
 
 function selectedLabels(
